@@ -1,0 +1,45 @@
+img {
+  margin: 10px 0;
+}
+
+.object-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+@media screen and (min-width: 690px) {
+  .object-center {
+    width: 49%;
+  }
+}
+@media screen and (min-width: 689px) {
+  .object-center {
+    width: 48%;
+  }
+}
+@media screen and (min-width: 687px) {
+  .object-center {
+    width: 47%;
+  }
+}
+@media screen and (min-width: 686px) {
+  .object-center {
+    width: 46%;
+  }
+}
+@media screen and (min-width: 680px) {
+  .object-center {
+    width: 42%;
+  }
+}
+@media screen and (min-width: 675px) {
+  .object-center {
+    width: 38%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .object-center {
+    width: 25%;
+  }
+}

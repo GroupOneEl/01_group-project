@@ -1,5 +1,6 @@
 // GLOBAL VARIABLES
 let searchButton = document.querySelector("#search-button");
+let searchInput = document.querySelector("#search-input");
 let movieResults = document.querySelector("#movie-results");
 let singleMovie = document.querySelector("#single-movie");
 // FUNCTIONS
@@ -10,24 +11,26 @@ function init() {
   if (movieID === "") {
     return;
   }
-  fetch(`http://www.omdbapi.com/?i=${movieID}&apikey=38367836`)
+  fetch(`http://www.omdbapi.com/?i=${movieID}&apikey=f14ca85d`)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
+      singleMovie.innerHTML += `<img class="object-center poster-resize" src="${data.Poster}"></img>`;
       singleMovie.innerHTML += `<div>${data.Plot}</div>`;
-      singleMovie.innerHTML += `<img src="${data.Poster}"></img>`;
     });
 }
 function handleSearchButton() {
-  fetch("https://www.omdbapi.com/?apikey=f14ca85d&s=batman")
+  singleMovie.innerHTML = "";
+  movieResults.innerHTML = "";
+  fetch(`https://www.omdbapi.com/?apikey=f14ca85d&s=${searchInput.value}`)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       data.Search.forEach((movie) => {
         movieResults.innerHTML += `<a href="index.html?i=${movie.imdbID}">${movie.Title}</a>`;
-        singleMovie.innerHTML += `<img src="${movie.Poster}"></img>`;
+        movieResults.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}"></a>`;
       });
     });
 }

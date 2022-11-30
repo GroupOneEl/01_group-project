@@ -16,6 +16,7 @@ function init() {
     })
     .then(function (data) {
       singleMovie.innerHTML += `<div>${data.Plot}</div>`;
+      singleMovie.innerHTML += `<img src="${data.Poster}"></img>`;
     });
 }
 function handleSearchButton() {
@@ -26,6 +27,7 @@ function handleSearchButton() {
     .then(function (data) {
       data.Search.forEach((movie) => {
         movieResults.innerHTML += `<a href="index.html?i=${movie.imdbID}">${movie.Title}</a>`;
+        singleMovie.innerHTML += `<img src="${movie.Poster}"></img>`;
       });
     });
 }

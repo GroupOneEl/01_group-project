@@ -1,2 +1,9 @@
-# 01_group-project
-NU Coding Bootcamp: Project One
+# Platform Name
+
+Summary
+
+Acceptance Criteria
+
+Screenshot
+
+URL

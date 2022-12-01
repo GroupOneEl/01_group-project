@@ -16,8 +16,13 @@ function init() {
       return response.json();
     })
     .then(function (data) {
-      singleMovie.innerHTML += `<img class="object-center poster-resize" src="${data.Poster}"></img>`;
+      singleMovie.innerHTML += `<h1>${data.Title}</h1>`;
+      singleMovie.innerHTML += `<img class="object-center border" src="${data.Poster}"></img>`;
       singleMovie.innerHTML += `<div>${data.Plot}</div>`;
+      singleMovie.innerHTML += `<div> Rating: ${data.Rated}</div>`;
+      for (let i = 0; i < data.Ratings.length; i++) {
+        singleMovie.innerHTML += `<div>${data.Ratings[i].Source}: ${data.Ratings[i].Value}</div>`;
+      }
     });
 }
 function handleSearchButton() {

@@ -11,8 +11,8 @@ img {
   margin: 10px 0;
 }
 body {
-  /* background: url("./nahuel-maretich-EeCQy8ZOmO0-unsplash.jpg");
-  background-size: cover; */
+  background: url("./nahuel-maretich-EeCQy8ZOmO0-unsplash.jpg");
+  background-size: cover;
 }
 .background {
   background-color: rgb(250, 240, 240, 0.8);
@@ -23,6 +23,7 @@ body {
 .movie-header {
   font-family: movie-header;
   font-size: 30px;
+  color: white;
 }
 .headings {
   font-family: art-deco;

@@ -3,6 +3,7 @@ let searchButton = document.querySelector("#search-button");
 let searchInput = document.querySelector("#search-input");
 let movieResults = document.querySelector("#movie-results");
 let singleMovie = document.querySelector("#single-movie");
+let singlePoster = document.querySelector("#single-poster");
 let bookMarkEl = document.querySelector("#add-bookmark");
 let shareBtnEl = document.querySelector("#share-btn");
 let moviesArray = JSON.parse(localStorage.getItem("bookmarks")) || [];
@@ -21,15 +22,15 @@ function init() {
     .then(function (data) {
       bookMarkEl.classList.remove("hidden");
       shareBtnEl.classList.remove("hidden");
-      singleMovie.innerHTML += `<h1 class="movie-header">${data.Title}</h1>`;
-      singleMovie.innerHTML += `<img class="object-center border" src="${data.Poster}"></img>`;
-      singleMovie.innerHTML += `<h2 class="headings background"> SUMMARY </h2>`;
-      singleMovie.innerHTML += `<div class="background">${data.Plot}</div>`;
-      singleMovie.innerHTML += `<h2 class="headings background"> RATING </h2>`;
-      singleMovie.innerHTML += `<div class="background"> ${data.Rated}</div>`;
-      singleMovie.innerHTML += `<h2 class="headings background"> REVIEWS </h2>`;
+      singlePoster.innerHTML += `<h1 class="movie-header">${data.Title}</h1>`;
+      singlePoster.innerHTML += `<img class="object-center border" src="${data.Poster}"></img>`;
+      singleMovie.innerHTML += `<h2 class="headings"> SUMMARY </h2>`;
+      singleMovie.innerHTML += `<div>${data.Plot}</div>`;
+      singleMovie.innerHTML += `<h2 class="headings"> RATING </h2>`;
+      singleMovie.innerHTML += `<div> ${data.Rated}</div>`;
+      singleMovie.innerHTML += `<h2 class="headings"> REVIEWS </h2>`;
       for (let i = 0; i < data.Ratings.length; i++) {
-        singleMovie.innerHTML += `<div class="background">${data.Ratings[i].Source}: ${data.Ratings[i].Value}</div>`;
+        singleMovie.innerHTML += `<div>${data.Ratings[i].Source}: ${data.Ratings[i].Value}</div>`;
       }
 
       bookMarkEl.setAttribute("movieTitle", data.Title);
@@ -66,7 +67,7 @@ function saveBookmark() {
 function copy() {
   let Url = document.createElement("a");
   Url.innerHTML = window.location.href;
-  console.log(Url.innerHTML);
+  shareBtnEl.innerHTML = `${shareBtnEl.innerHTML}  ${Url.innerHTML}`;
 }
 
 // EVENT LISTENERS

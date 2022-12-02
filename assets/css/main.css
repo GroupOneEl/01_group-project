@@ -15,7 +15,7 @@ body {
   background-size: cover;
 }
 .background {
-  background-color: rgb(250, 240, 240, 0.8);
+  background-color: rgba(254, 254, 254, 0.8);
 }
 .font {
   font-family: art-deco;

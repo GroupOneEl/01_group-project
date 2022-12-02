@@ -13,11 +13,19 @@
   </head>
 
   <body>
-    <section class="bg-gradient-to-r from-black via-red-700 to-black p-3">
-      <h1 class="text-center text-white text-5xl font">MyMovieSpace</h1>
-      <input id="search-input" placeholder="Search..." class="border flex mx-auto my-3" type="" />
-      <button id="search-button" class="text-red-700 flex mx-auto bg-white px-2">Search</button>
-    </section>
+    <header class="bg-gradient-to-r from-black via-red-700 to-black p-4">
+      <div class="inline-block mx-auto">
+        <h1 class="text-white text-6xl font">MyMovieSpace</h1>
+      </div>
+      <div class="inline-block float-left">
+        <input id="search-input" placeholder="Search..." class="border my-3" type="" />
+        <button id="search-button" class="text-red-700 bg-white px-2">Search</button>
+      </div>
+      <nav class="inline-block float-right">
+        <button><span class="material-symbols-outlined text-white text-4xl"> bookmark </span></button>
+        <button><span class="material-symbols-outlined text-white text-4xl"> share </span></button>
+      </nav>
+    </header>
     <div class="text-center" id="movie-results"></div>
     <div class="text-center" id="single-movie"></div>
     <div class="text-center background">

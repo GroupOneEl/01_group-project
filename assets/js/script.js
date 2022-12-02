@@ -4,7 +4,7 @@ let searchInput = document.querySelector("#search-input");
 let movieResults = document.querySelector("#movie-results");
 let singleMovie = document.querySelector("#single-movie");
 let bookMarkEl = document.querySelector("#add-bookmark");
-
+let addBookMark = document.querySelector("#add-bookmark");
 let moviesArray = JSON.parse(localStorage.getItem("bookmarks")) || [];
 // FUNCTIONS
 
@@ -19,14 +19,19 @@ function init() {
       return response.json();
     })
     .then(function (data) {
-      singleMovie.innerHTML += `<h1>${data.Title}</h1>`;
+      addBookMark.classList.remove("hidden");
+      singleMovie.innerHTML += `<h1 class="headings">${data.Title}</h1>`;
       singleMovie.innerHTML += `<img class="object-center border" src="${data.Poster}"></img>`;
-      singleMovie.innerHTML += `<div>${data.Plot}</div>`;
-      singleMovie.innerHTML += `<div> Rating: ${data.Rated}</div>`;
+      singleMovie.innerHTML += `<h2 class="headings background"> SUMMARY </h2>`;
+      singleMovie.innerHTML += `<div class="background">${data.Plot}</div>`;
+      singleMovie.innerHTML += `<h2 class="headings background"> RATING </h2>`;
+      singleMovie.innerHTML += `<div class="background"> ${data.Rated}</div>`;
+      singleMovie.innerHTML += `<h2 class="headings background"> REVIEWS </h2>`;
       for (let i = 0; i < data.Ratings.length; i++) {
-        singleMovie.innerHTML += `<div>${data.Ratings[i].Source}: ${data.Ratings[i].Value}</div>`;
+        singleMovie.innerHTML += `<div class="background">${data.Ratings[i].Source}: ${data.Ratings[i].Value}</div>`;
       }
       bookMarkEl.setAttribute("movieTitle", data.Title);
+      bookMarkEl.setAttribute("moviePoster", data.Poster);
     });
 }
 function handleSearchButton() {
@@ -37,7 +42,7 @@ function handleSearchButton() {
       return response.json();
     })
     .then(function (data) {
-      // message for no movie found 
+      // message for no movie found
       data.Search.forEach((movie) => {
         movieResults.innerHTML += `<a href="index.html?i=${movie.imdbID}">${movie.Title}</a>`;
         movieResults.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}"></a>`;
@@ -45,10 +50,11 @@ function handleSearchButton() {
     });
 }
 function saveBookmark() {
-  let savedMarkMovie = this.getAttribute("movieTitle");
+  let savedMovie = this.getAttribute("movieTitle");
+  let savedPoster = this.getAttribute("movieTitle");
   let moviesObject = {
-    movie: savedMarkMovie,
-    img: 
+    movie: savedMovie,
+    poster: savedPoster,
   };
   moviesArray.push(moviesObject);
   localStorage.setItem("bookmarks", JSON.stringify(moviesArray));

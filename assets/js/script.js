@@ -4,7 +4,7 @@ let searchInput = document.querySelector("#search-input");
 let movieResults = document.querySelector("#movie-results");
 let singleMovie = document.querySelector("#single-movie");
 let bookMarkEl = document.querySelector("#add-bookmark");
-let addBookMark = document.querySelector("#add-bookmark");
+let shareBtnEl = document.querySelector("#share-btn");
 let moviesArray = JSON.parse(localStorage.getItem("bookmarks")) || [];
 // FUNCTIONS
 
@@ -19,7 +19,8 @@ function init() {
       return response.json();
     })
     .then(function (data) {
-      addBookMark.classList.remove("hidden");
+      bookMarkEl.classList.remove("hidden");
+      shareBtnEl.classList.remove("hidden");
       singleMovie.innerHTML += `<h1 class="movie-header">${data.Title}</h1>`;
       singleMovie.innerHTML += `<img class="object-center border" src="${data.Poster}"></img>`;
       singleMovie.innerHTML += `<h2 class="headings background"> SUMMARY </h2>`;
@@ -30,6 +31,7 @@ function init() {
       for (let i = 0; i < data.Ratings.length; i++) {
         singleMovie.innerHTML += `<div class="background">${data.Ratings[i].Source}: ${data.Ratings[i].Value}</div>`;
       }
+
       bookMarkEl.setAttribute("movieTitle", data.Title);
       bookMarkEl.setAttribute("moviePoster", data.Poster);
     });
@@ -42,6 +44,8 @@ function handleSearchButton() {
       return response.json();
     })
     .then(function (data) {
+      bookMarkEl.classList.add("hidden");
+      shareBtnEl.classList.add("hidden");
       // message for no movie found
       data.Search.forEach((movie) => {
         movieResults.innerHTML += `<a href="index.html?i=${movie.imdbID}">${movie.Title}</a>`;
@@ -51,7 +55,7 @@ function handleSearchButton() {
 }
 function saveBookmark() {
   let savedMovie = this.getAttribute("movieTitle");
-  let savedPoster = this.getAttribute("movieTitle");
+  let savedPoster = this.getAttribute("moviePoster");
   let moviesObject = {
     movie: savedMovie,
     poster: savedPoster,

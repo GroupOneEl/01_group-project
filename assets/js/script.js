@@ -63,20 +63,17 @@ function saveBookmark() {
   moviesArray.push(moviesObject);
   localStorage.setItem("bookmarks", JSON.stringify(moviesArray));
 }
-// handle formSubmit
-// fetch https://www.omdbapi.com/?apikey=f14ca85d&s=batman
-// For each movie, innerhtml += movie-results
-// Create a link for each search results
-// <a href= "index.html?i=tt";
+function copy() {
+  let Url = document.createElement("a");
+  Url.innerHTML = window.location.href;
+  console.log(Url.innerHTML);
+}
 
 // EVENT LISTENERS
-// init function
-// check the url to see if it contains the i query string
-// call another fetch http://www.omdbapi.com/?i=tt0372784&apikey=38367836
-// For each movie, innerhtml += movie-results
-// User clicks on the search button
 searchButton.addEventListener("click", handleSearchButton);
 
 bookMarkEl.addEventListener("click", saveBookmark);
+
+shareBtnEl.addEventListener("click", copy);
 
 init();

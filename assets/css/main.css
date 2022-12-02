@@ -1,4 +1,8 @@
 @font-face {
+  font-family: movie-header;
+  src: url(./KungFuMaster-K7vrX.otf);
+}
+@font-face {
   font-family: art-deco;
   src: url(./Showtime-R9Ke.ttf);
 }
@@ -15,6 +19,10 @@ body {
 }
 .font {
   font-family: art-deco;
+}
+.movie-header {
+  font-family: movie-header;
+  font-size: 30px;
 }
 .headings {
   font-family: art-deco;

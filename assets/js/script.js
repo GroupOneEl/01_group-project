@@ -20,7 +20,7 @@ function init() {
     })
     .then(function (data) {
       addBookMark.classList.remove("hidden");
-      singleMovie.innerHTML += `<h1 class="headings">${data.Title}</h1>`;
+      singleMovie.innerHTML += `<h1 class="movie-header">${data.Title}</h1>`;
       singleMovie.innerHTML += `<img class="object-center border" src="${data.Poster}"></img>`;
       singleMovie.innerHTML += `<h2 class="headings background"> SUMMARY </h2>`;
       singleMovie.innerHTML += `<div class="background">${data.Plot}</div>`;

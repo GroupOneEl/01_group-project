@@ -15,7 +15,7 @@ body {
   background-size: cover;
 }
 .background {
-  background-color: rgba(254, 254, 254, 0.8);
+  background-color: rgba(254, 254, 254, 0.9);
 }
 .font {
   font-family: art-deco;
@@ -39,43 +39,8 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 20%;
 }
 .material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
-}
-@media screen and (min-width: 690px) {
-  .object-center {
-    width: 49%;
-  }
-}
-@media screen and (min-width: 689px) {
-  .object-center {
-    width: 48%;
-  }
-}
-@media screen and (min-width: 687px) {
-  .object-center {
-    width: 47%;
-  }
-}
-@media screen and (min-width: 686px) {
-  .object-center {
-    width: 46%;
-  }
-}
-@media screen and (min-width: 680px) {
-  .object-center {
-    width: 42%;
-  }
-}
-@media screen and (min-width: 675px) {
-  .object-center {
-    width: 38%;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .object-center {
-    width: 25%;
-  }
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
 }

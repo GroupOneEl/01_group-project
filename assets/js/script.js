@@ -8,6 +8,7 @@ let bookMarkEl = document.querySelector("#add-bookmark");
 let showBookMark = document.querySelector("#show-bookmark");
 let homeBtnEl = document.querySelector("#home-button");
 let shareBtnEl = document.querySelector("#share-btn");
+
 let moviesArray = JSON.parse(localStorage.getItem("bookmarks")) || [];
 // FUNCTIONS
 
@@ -52,7 +53,7 @@ function handleSearchButton() {
       shareBtnEl.classList.add("hidden");
       // message for no movie found
       data.Search.forEach((movie) => {
-        movieResults.innerHTML += `<a href="index.html?i=${movie.imdbID}">${movie.Title}</a>`;
+        movieResults.innerHTML += `<a class="movie-header" href="index.html?i=${movie.imdbID}">${movie.Title}</a>`;
         movieResults.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}"></a>`;
       });
     });
@@ -79,7 +80,7 @@ function handleShowBookMark() {
   });
 }
 function saveBookmark() {
-  bookMarkEl.classList.toggle("text-yellow-500");
+  bookMarkEl.classList.toggle("text-amber-500");
   let savedMovie = this.getAttribute("movieTitle");
   let savedPoster = this.getAttribute("moviePoster");
   let moviesObject = {

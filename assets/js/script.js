@@ -51,11 +51,15 @@ function handleSearchButton() {
     .then(function (data) {
       bookMarkEl.classList.add("hidden");
       shareBtnEl.classList.add("hidden");
-      // message for no movie found
-      data.Search.forEach((movie) => {
-        movieResults.innerHTML += `<a class="movie-header" href="index.html?i=${movie.imdbID}">${movie.Title}</a>`;
-        movieResults.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}"></a>`;
-      });
+      
+      if (data.Search === undefined) {
+        singlePoster.innerHTML = `<h1 class="movie-header">NO MOVIES FOUND!</h1>`;
+      } else {
+        data.Search.forEach((movie) => {
+          movieResults.innerHTML += `<a class="movie-header" href="index.html?i=${movie.imdbID}">${movie.Title}</a>`;
+          movieResults.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}"></a>`;
+        });
+      }
     });
 }
 

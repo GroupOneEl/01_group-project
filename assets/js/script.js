@@ -65,7 +65,7 @@ function handleShowBookMark() {
   shareBtnEl.classList.add("hidden");
 
   moviesArray.forEach((object) => {
-    singlePoster.innerHTML += object.movie;
+    singlePoster.innerHTML += `<div class="movie-header">${object.movie}</div>`;
     singlePoster.innerHTML += `<img class="object-center" src="${object.poster}"></img>`;
   });
 }

@@ -11,8 +11,8 @@ img {
   margin: 10px 0;
 }
 body {
-  /* background: url("./nahuel-maretich-EeCQy8ZOmO0-unsplash.jpg");
-  background-size: cover; */
+  background: url("./nahuel-maretich-EeCQy8ZOmO0-unsplash.jpg");
+  background-size: cover;
 }
 .background {
   background-color: rgba(254, 254, 254, 0.8);

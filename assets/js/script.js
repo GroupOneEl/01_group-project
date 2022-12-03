@@ -79,6 +79,7 @@ function handleShowBookMark() {
   });
 }
 function saveBookmark() {
+  bookMarkEl.classList.toggle("text-yellow-500");
   let savedMovie = this.getAttribute("movieTitle");
   let savedPoster = this.getAttribute("moviePoster");
   let moviesObject = {

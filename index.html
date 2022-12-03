@@ -13,18 +13,16 @@
   </head>
 
   <body>
-    <header class="bg-gradient-to-r from-black via-red-700 to-black p-4">
-      <div class="text-center">
-        <h1 class="inline-block text-white text-6xl font">MyMovieSpace</h1>
-        <div class="inline-block float-left">
-          <input id="search-input" placeholder="Search..." class="border my-3" type="" />
-          <button id="search-button" class="text-red-700 bg-white px-2">Search</button>
-        </div>
-        <nav class="inline-block float-right">
-          <button><span class="material-symbols-outlined text-white text-4xl"> bookmark </span></button>
-          <button><span class="material-symbols-outlined text-white text-4xl"> share </span></button>
-        </nav>
+    <header class="bg-gradient-to-r from-black via-red-700 to-black p-4 text-center">
+      <h1 class="inline-block text-white text-6xl font">MyMovieSpace</h1>
+      <div class="inline-block float-left">
+        <input id="search-input" placeholder="Search..." class="border my-3" type="" />
+        <button id="search-button" class="text-red-700 bg-white px-2">Search</button>
       </div>
+      <nav class="inline-block float-right">
+        <button id="show-bookmark"><span class="material-symbols-outlined text-white text-4xl"> bookmark </span></button>
+        <button><span class="material-symbols-outlined text-white text-4xl"> share </span></button>
+      </nav>
     </header>
     <div class="text-center" id="movie-results"></div>
     <div class="text-center" id="single-poster"></div>

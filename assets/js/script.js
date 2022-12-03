@@ -5,6 +5,7 @@ let movieResults = document.querySelector("#movie-results");
 let singleMovie = document.querySelector("#single-movie");
 let singlePoster = document.querySelector("#single-poster");
 let bookMarkEl = document.querySelector("#add-bookmark");
+let showBookMark = document.querySelector("#show-bookmark");
 let shareBtnEl = document.querySelector("#share-btn");
 let moviesArray = JSON.parse(localStorage.getItem("bookmarks")) || [];
 // FUNCTIONS
@@ -39,6 +40,7 @@ function init() {
 }
 function handleSearchButton() {
   singleMovie.innerHTML = "";
+  singlePoster.innerHTML = "";
   movieResults.innerHTML = "";
   fetch(`https://www.omdbapi.com/?apikey=f14ca85d&s=${searchInput.value}`)
     .then(function (response) {
@@ -53,6 +55,19 @@ function handleSearchButton() {
         movieResults.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}"></a>`;
       });
     });
+}
+
+function handleShowBookMark() {
+  singleMovie.innerHTML = "";
+  singlePoster.innerHTML = "";
+  movieResults.innerHTML = "";
+  bookMarkEl.classList.add("hidden");
+  shareBtnEl.classList.add("hidden");
+
+  moviesArray.forEach((object) => {
+    singlePoster.innerHTML += object.movie;
+    singlePoster.innerHTML += `<img class="object-center" src="${object.poster}"></img>`;
+  });
 }
 function saveBookmark() {
   let savedMovie = this.getAttribute("movieTitle");
@@ -74,6 +89,8 @@ function copy() {
 searchButton.addEventListener("click", handleSearchButton);
 
 bookMarkEl.addEventListener("click", saveBookmark);
+
+showBookMark.addEventListener("click", handleShowBookMark);
 
 shareBtnEl.addEventListener("click", copy);
 

@@ -6,6 +6,7 @@ let singleMovie = document.querySelector("#single-movie");
 let singlePoster = document.querySelector("#single-poster");
 let bookMarkEl = document.querySelector("#add-bookmark");
 let showBookMark = document.querySelector("#show-bookmark");
+let homeBtnEl = document.querySelector("#home-button");
 let shareBtnEl = document.querySelector("#share-btn");
 let moviesArray = JSON.parse(localStorage.getItem("bookmarks")) || [];
 // FUNCTIONS
@@ -57,6 +58,14 @@ function handleSearchButton() {
     });
 }
 
+function handleHomeBtn() {
+  singleMovie.innerHTML = "";
+  singlePoster.innerHTML = "";
+  movieResults.innerHTML = "";
+  bookMarkEl.classList.add("hidden");
+  shareBtnEl.classList.add("hidden");
+}
+
 function handleShowBookMark() {
   singleMovie.innerHTML = "";
   singlePoster.innerHTML = "";
@@ -91,6 +100,8 @@ searchButton.addEventListener("click", handleSearchButton);
 bookMarkEl.addEventListener("click", saveBookmark);
 
 showBookMark.addEventListener("click", handleShowBookMark);
+
+homeBtnEl.addEventListener("click", handleHomeBtn);
 
 shareBtnEl.addEventListener("click", copy);
 

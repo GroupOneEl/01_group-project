@@ -51,14 +51,30 @@ function handleSearchButton() {
     .then(function (data) {
       bookMarkEl.classList.add("hidden");
       shareBtnEl.classList.add("hidden");
-      
       if (data.Search === undefined) {
         singlePoster.innerHTML = `<h1 class="movie-header">NO MOVIES FOUND!</h1>`;
       } else {
-        data.Search.forEach((movie) => {
-          movieResults.innerHTML += `<a class="movie-header" href="index.html?i=${movie.imdbID}">${movie.Title}</a>`;
-          movieResults.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}"></a>`;
+        let movieDiv = document.createElement("div");
+        movieDiv.style.display = "flex";
+        let movieDiv2 = document.createElement("div");
+        movieDiv2.style.display = "flex";
+        data.Search.forEach((movie, index) => {
+          let childDiv1 = document.createElement("div");
+          childDiv1.style.border = "0.5px solid white";
+          childDiv1.style.background = "rgba(254, 254, 254, 0.2)";
+          childDiv1.style.margin = "5px";
+          childDiv1.style.width = "20%";
+          if (index < 5) {
+            childDiv1.innerHTML += `<a class="movie-header" href="index.html?i=${movie.imdbID}">${movie.Title}</a>`;
+            childDiv1.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}" height="150px" width="150px"></a>`;
+            movieDiv.append(childDiv1);
+          } else {
+            childDiv1.innerHTML += `<a class="movie-header" href="index.html?i=${movie.imdbID}">${movie.Title}</a>`;
+            childDiv1.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}" height="150px" width="150px"></a>`;
+            movieDiv2.append(childDiv1);
+          }
         });
+        movieResults.append(movieDiv, movieDiv2);
       }
     });
 }
@@ -78,11 +94,29 @@ function handleShowBookMark() {
   bookMarkEl.classList.add("hidden");
   shareBtnEl.classList.add("hidden");
 
-  moviesArray.forEach((object) => {
-    singlePoster.innerHTML += `<div class="movie-header">${object.movie}</div>`;
-    singlePoster.innerHTML += `<img class="object-center" src="${object.poster}"></img>`;
+  let movieDiv = document.createElement("div");
+  movieDiv.style.display = "flex";
+  let movieDiv2 = document.createElement("div");
+  movieDiv2.style.display = "flex";
+  moviesArray.forEach((movie, index) => {
+    let childDiv1 = document.createElement("div");
+    childDiv1.style.border = "0.5px solid white";
+    childDiv1.style.background = "rgba(254, 254, 254, 0.2)";
+    childDiv1.style.margin = "5px";
+    childDiv1.style.width = "20%";
+    if (index < 5) {
+      childDiv1.innerHTML += `<div class="movie-header">${movie.movie}</div>`;
+      childDiv1.innerHTML += `<img class="object-center" src="${movie.poster}" height="175" width="175">`;
+      movieDiv.append(childDiv1);
+    } else {
+      childDiv1.innerHTML += `<div class="movie-header">${movie.movie}</div>`;
+      childDiv1.innerHTML += `<img class="object-center" src="${movie.poster}" height="175" width="175">`;
+      movieDiv2.append(childDiv1);
+    }
   });
+  movieResults.append(movieDiv, movieDiv2);
 }
+
 function saveBookmark() {
   bookMarkEl.classList.toggle("text-amber-500");
   let savedMovie = this.getAttribute("movieTitle");
@@ -95,9 +129,14 @@ function saveBookmark() {
   localStorage.setItem("bookmarks", JSON.stringify(moviesArray));
 }
 function copy() {
-  let Url = document.createElement("a");
-  Url.innerHTML = window.location.href;
-  shareBtnEl.innerHTML = `${shareBtnEl.innerHTML}  ${Url.innerHTML}`;
+  navigator.clipboard
+    .writeText(window.location.href)
+    .then(() => {
+      alert(`Saved to clipboard successfully`);
+    })
+    .catch((err) => {
+      alert(`Error while saving to clipboard, ${err}`);
+    });
 }
 
 // EVENT LISTENERS

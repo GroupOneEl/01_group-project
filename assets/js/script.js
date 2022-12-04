@@ -96,27 +96,27 @@ function handleShowBookMark() {
   bookMarkEl.classList.add("hidden");
   shareBtnEl.classList.add("hidden");
 
-  let movieDiv = document.createElement("div");
-  movieDiv.style.display = "flex";
-  let movieDiv2 = document.createElement("div");
-  movieDiv2.style.display = "flex";
+  let movieDivTop = document.createElement("div");
+  movieDivTop.style.display = "flex";
+  let movieDivBottom = document.createElement("div");
+  movieDivBottom.style.display = "flex";
   moviesArray.forEach((movie, index) => {
-    let childDiv1 = document.createElement("div");
-    childDiv1.style.border = "1px solid white";
-    childDiv1.style.background = "rgba(254, 254, 254, 0.3)";
-    childDiv1.style.margin = "5px";
-    childDiv1.style.width = "19%";
+    let childDiv = document.createElement("div");
+    childDiv.style.border = "1px solid white";
+    childDiv.style.background = "rgba(254, 254, 254, 0.3)";
+    childDiv.style.margin = "5px";
+    childDiv.style.width = "19%";
     if (index < 5) {
-      childDiv1.innerHTML += `<div class="movie-header">${movie.movie}</div>`;
-      childDiv1.innerHTML += `<img class="object-center" src="${movie.poster}" height="175" width="175">`;
-      movieDiv.append(childDiv1);
+      childDiv.innerHTML += `<a href="index.html?i=${movie.id}"><div class="movie-header">${movie.movie}</div></a>`;
+      childDiv.innerHTML += `<a href="index.html?i=${movie.id}"><img class="object-center" src="${movie.poster}" height="175" width="175"></a>`;
+      movieDivTop.append(childDiv);
     } else {
-      childDiv1.innerHTML += `<div class="movie-header">${movie.movie}</div>`;
-      childDiv1.innerHTML += `<img class="object-center" src="${movie.poster}" height="175" width="175">`;
-      movieDiv2.append(childDiv1);
+      childDiv.innerHTML += `<a href="index.html?i=${movie.id}"><div class="movie-header">${movie.movie}</div></a>`;
+      childDiv.innerHTML += `<a href="index.html?i=${movie.id}"><img class="object-center" src="${movie.poster}" height="175" width="175"></a>`;
+      movieDivBottom.append(childDiv);
     }
   });
-  movieResults.append(movieDiv, movieDiv2);
+  movieResults.append(movieDivTop, movieDivBottom);
 }
 
 function saveBookmark() {

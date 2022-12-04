@@ -38,6 +38,7 @@ function init() {
 
       bookMarkEl.setAttribute("movieTitle", data.Title);
       bookMarkEl.setAttribute("moviePoster", data.Poster);
+      bookMarkEl.setAttribute("movieID", data.imdbID);
     });
 }
 function handleSearchButton() {
@@ -52,7 +53,8 @@ function handleSearchButton() {
       bookMarkEl.classList.add("hidden");
       shareBtnEl.classList.add("hidden");
       if (data.Search === undefined) {
-        singlePoster.innerHTML = `<h1 class="movie-header">NO MOVIES FOUND!</h1>`;
+        singlePoster.innerHTML += `<h1 class="movie-header mt-20">NO MOVIES FOUND!</h1>`;
+        singlePoster.innerHTML += `<h1 class="movie-header">PLEASE SEARCH AGAIN</h1>`;
       } else {
         let movieDiv = document.createElement("div");
         movieDiv.style.display = "flex";
@@ -61,9 +63,9 @@ function handleSearchButton() {
         data.Search.forEach((movie, index) => {
           let childDiv1 = document.createElement("div");
           childDiv1.style.border = "0.5px solid white";
-          childDiv1.style.background = "rgba(254, 254, 254, 0.2)";
+          childDiv1.style.background = "rgba(254, 254, 254, 0.3)";
           childDiv1.style.margin = "5px";
-          childDiv1.style.width = "20%";
+          childDiv1.style.width = "19%";
           if (index < 5) {
             childDiv1.innerHTML += `<a class="movie-header" href="index.html?i=${movie.imdbID}">${movie.Title}</a>`;
             childDiv1.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}" height="150px" width="150px"></a>`;
@@ -100,10 +102,10 @@ function handleShowBookMark() {
   movieDiv2.style.display = "flex";
   moviesArray.forEach((movie, index) => {
     let childDiv1 = document.createElement("div");
-    childDiv1.style.border = "0.5px solid white";
-    childDiv1.style.background = "rgba(254, 254, 254, 0.2)";
+    childDiv1.style.border = "1px solid white";
+    childDiv1.style.background = "rgba(254, 254, 254, 0.3)";
     childDiv1.style.margin = "5px";
-    childDiv1.style.width = "20%";
+    childDiv1.style.width = "19%";
     if (index < 5) {
       childDiv1.innerHTML += `<div class="movie-header">${movie.movie}</div>`;
       childDiv1.innerHTML += `<img class="object-center" src="${movie.poster}" height="175" width="175">`;
@@ -121,9 +123,11 @@ function saveBookmark() {
   bookMarkEl.classList.toggle("text-amber-500");
   let savedMovie = this.getAttribute("movieTitle");
   let savedPoster = this.getAttribute("moviePoster");
+  let savedID = this.getAttribute("movieID");
   let moviesObject = {
     movie: savedMovie,
     poster: savedPoster,
+    id: savedID,
   };
   moviesArray.push(moviesObject);
   localStorage.setItem("bookmarks", JSON.stringify(moviesArray));

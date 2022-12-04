@@ -8,6 +8,7 @@ let bookMarkEl = document.querySelector("#add-bookmark");
 let showBookMark = document.querySelector("#show-bookmark");
 let homeBtnEl = document.querySelector("#home-button");
 let shareBtnEl = document.querySelector("#share-btn");
+let homeShareBtnEl = document.querySelector("#home-share-btn");
 
 let moviesArray = JSON.parse(localStorage.getItem("bookmarks")) || [];
 // FUNCTIONS
@@ -153,5 +154,7 @@ showBookMark.addEventListener("click", handleShowBookMark);
 homeBtnEl.addEventListener("click", handleHomeBtn);
 
 shareBtnEl.addEventListener("click", copy);
+
+homeShareBtnEl.addEventListener("click", copy);
 
 init();

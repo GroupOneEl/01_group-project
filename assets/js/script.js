@@ -28,14 +28,14 @@ function init() {
       shareBtnEl.classList.remove("hidden");
       singlePoster.innerHTML += `<h1 class="movie-header">${data.Title}</h1>`;
       singlePoster.innerHTML += `<img class="object-center border" src="${data.Poster}"></img>`;
-      singleMovie.innerHTML += `<h2 class="headings"> SUMMARY </h2>`;
-      singleMovie.innerHTML += `<div>${data.Plot}</div>`;
-      singleMovie.innerHTML += `<h2 class="headings"> RATING </h2>`;
-      singleMovie.innerHTML += `<div> ${data.Rated}</div>`;
-      singleMovie.innerHTML += `<h2 class="headings"> REVIEWS </h2>`;
-      singleMovie.innerHTML += `<div>${data.Ratings[0].Source}: ${data.Ratings[0].Value.slice(0, 1) >= 5 ? data.Ratings[0].Value + " 🍎" : data.Ratings[0].Value + " 🤮"}</div>`;
+      singleMovie.innerHTML += `<h2 class="headings pt-5 my-3"> SUMMARY </h2>`;
+      singleMovie.innerHTML += `<div class="text-lg">${data.Plot}</div>`;
+      singleMovie.innerHTML += `<h2 class="headings my-3"> RATING </h2>`;
+      singleMovie.innerHTML += `<div class="text-lg"> ${data.Rated}</div>`;
+      singleMovie.innerHTML += `<h2 class="headings my-3"> REVIEWS </h2>`;
+      singleMovie.innerHTML += `<div class="text-lg">${data.Ratings[0].Source}: ${data.Ratings[0].Value.slice(0, 1) >= 5 ? data.Ratings[0].Value + " 🍎" : data.Ratings[0].Value + " 🤮"}</div>`;
       for (let i = 1; i < data.Ratings.length; i++) {
-        singleMovie.innerHTML += `<div>${data.Ratings[i].Source}: ${data.Ratings[i].Value.slice(0, 2) >= 50 ? data.Ratings[i].Value + " 🍎" : data.Ratings[i].Value + " 🤮"}</div>`;
+        singleMovie.innerHTML += `<div class="text-lg">${data.Ratings[i].Source}: ${data.Ratings[i].Value.slice(0, 2) >= 50 ? data.Ratings[i].Value + " 🍎" : data.Ratings[i].Value + " 🤮"}</div>`;
       }
 
       bookMarkEl.setAttribute("movieTitle", data.Title);

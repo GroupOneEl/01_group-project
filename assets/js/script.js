@@ -33,9 +33,9 @@ function init() {
       singleMovie.innerHTML += `<h2 class="headings"> RATING </h2>`;
       singleMovie.innerHTML += `<div> ${data.Rated}</div>`;
       singleMovie.innerHTML += `<h2 class="headings"> REVIEWS </h2>`;
-      for (let i = 0; i < data.Ratings.length; i++) {
-        console.log(data.Ratings[i].Value.slice(0, 1));
-        singleMovie.innerHTML += `<div>${data.Ratings[i].Source}: ${data.Ratings[i].Value.slice(0, 1) >= 5 ? data.Ratings[i].Value + " 🍎" : data.Ratings[i].Value + " 😔"}</div>`;
+      singleMovie.innerHTML += `<div>${data.Ratings[0].Source}: ${data.Ratings[0].Value.slice(0, 1) >= 5 ? data.Ratings[0].Value + " 🍎" : data.Ratings[0].Value + " 🤮"}</div>`;
+      for (let i = 1; i < data.Ratings.length; i++) {
+        singleMovie.innerHTML += `<div>${data.Ratings[i].Source}: ${data.Ratings[i].Value.slice(0, 1) >= 50 ? data.Ratings[i].Value + " 🍎" : data.Ratings[i].Value + " 🤮"}</div>`;
       }
 
       bookMarkEl.setAttribute("movieTitle", data.Title);

@@ -34,7 +34,8 @@ function init() {
       singleMovie.innerHTML += `<div> ${data.Rated}</div>`;
       singleMovie.innerHTML += `<h2 class="headings"> REVIEWS </h2>`;
       for (let i = 0; i < data.Ratings.length; i++) {
-        singleMovie.innerHTML += `<div>${data.Ratings[i].Source}: ${data.Ratings[i].Value}</div>`;
+        console.log(data.Ratings[i].Value.slice(0, 1));
+        singleMovie.innerHTML += `<div>${data.Ratings[i].Source}: ${data.Ratings[i].Value.slice(0, 1) >= 5 ? data.Ratings[i].Value + " 🍎" : data.Ratings[i].Value + " 😔"}</div>`;
       }
 
       bookMarkEl.setAttribute("movieTitle", data.Title);

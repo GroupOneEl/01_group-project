@@ -31,6 +31,8 @@ function init() {
       singlePoster.innerHTML += `<img class="object-center border" src="${data.Poster}"></img>`;
       singleMovie.innerHTML += `<h2 class="headings pt-5 my-3"> SUMMARY </h2>`;
       singleMovie.innerHTML += `<div class="text-lg">${data.Plot}</div>`;
+      singleMovie.innerHTML += `<h2 class="headings pt-5 my-3"> ACTORS </h2>`;
+      singleMovie.innerHTML += `<div class="text-lg">${data.Actors}</div>`;
       singleMovie.innerHTML += `<h2 class="headings my-3"> RATING </h2>`;
       singleMovie.innerHTML += `<div class="text-lg"> ${data.Rated}</div>`;
       singleMovie.innerHTML += `<h2 class="headings my-3"> REVIEWS </h2>`;

@@ -87,6 +87,7 @@ function handleHomeBtn() {
   singleMovie.innerHTML = "";
   singlePoster.innerHTML = "";
   movieResults.innerHTML = "";
+  window.location.href = "file:///Users/amerkulovic/code/01_group-project/index.html"
   bookMarkEl.classList.add("hidden");
   shareBtnEl.classList.add("hidden");
 }

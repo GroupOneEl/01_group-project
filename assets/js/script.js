@@ -9,6 +9,7 @@ let showBookMark = document.querySelector("#show-bookmark");
 let homeBtnEl = document.querySelector("#home-button");
 let shareBtnEl = document.querySelector("#share-btn");
 let homeShareBtnEl = document.querySelector("#home-share-btn");
+let count = 0;
 
 let moviesArray = JSON.parse(localStorage.getItem("bookmarks")) || [];
 // FUNCTIONS
@@ -33,9 +34,21 @@ function init() {
       singleMovie.innerHTML += `<h2 class="headings my-3"> RATING </h2>`;
       singleMovie.innerHTML += `<div class="text-lg"> ${data.Rated}</div>`;
       singleMovie.innerHTML += `<h2 class="headings my-3"> REVIEWS </h2>`;
-      singleMovie.innerHTML += `<div class="text-lg">${data.Ratings[0].Source}: ${data.Ratings[0].Value.slice(0, 1) >= 5 ? data.Ratings[0].Value + " 🍎" : data.Ratings[0].Value + " 🤮"}</div>`;
+      singleMovie.innerHTML += `<div class="text-lg">${
+        data.Ratings[0].Source
+      }: ${
+        data.Ratings[0].Value.slice(0, 1) >= 5
+          ? data.Ratings[0].Value + " 🍎"
+          : data.Ratings[0].Value + " 🤮"
+      }</div>`;
       for (let i = 1; i < data.Ratings.length; i++) {
-        singleMovie.innerHTML += `<div class="text-lg">${data.Ratings[i].Source}: ${data.Ratings[i].Value.slice(0, 2) >= 50 ? data.Ratings[i].Value + " 🍎" : data.Ratings[i].Value + " 🤮"}</div>`;
+        singleMovie.innerHTML += `<div class="text-lg">${
+          data.Ratings[i].Source
+        }: ${
+          data.Ratings[i].Value.slice(0, 2) >= 50
+            ? data.Ratings[i].Value + " 🍎"
+            : data.Ratings[i].Value + " 🤮"
+        }</div>`;
       }
 
       bookMarkEl.setAttribute("movieTitle", data.Title);
@@ -76,7 +89,8 @@ function handleHomeBtn() {
   singleMovie.innerHTML = "";
   singlePoster.innerHTML = "";
   movieResults.innerHTML = "";
-  window.location.href = "file:///Users/amerkulovic/code/01_group-project/index.html";
+  window.location.href =
+    "file:///Users/amerkulovic/code/01_group-project/index.html";
   bookMarkEl.classList.add("hidden");
   shareBtnEl.classList.add("hidden");
 }
@@ -109,9 +123,20 @@ function saveBookmark() {
     poster: savedPoster,
     id: savedID,
   };
-  moviesArray.push(moviesObject);
-  localStorage.setItem("bookmarks", JSON.stringify(moviesArray));
+  let index;
+  moviesArray.forEach((movie, i) => {
+    if (movie.id === savedID) {
+      count++;
+      index = i;
+      moviesArray.remove(moviesArray[i]);
+    }
+  });
+  if (count === 0) {
+    moviesArray.push(moviesObject);
+    localStorage.setItem("bookmarks", JSON.stringify(moviesArray));
+  }
 }
+
 function copy() {
   navigator.clipboard
     .writeText(window.location.href)

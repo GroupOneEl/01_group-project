@@ -58,27 +58,16 @@ function handleSearchButton() {
         singlePoster.innerHTML += `<h1 class="movie-header mt-20">NO MOVIES FOUND!</h1>`;
         singlePoster.innerHTML += `<h1 class="movie-header">PLEASE SEARCH AGAIN</h1>`;
       } else {
-        let movieDiv = document.createElement("div");
-        movieDiv.style.display = "flex";
-        let movieDiv2 = document.createElement("div");
-        movieDiv2.style.display = "flex";
-        data.Search.forEach((movie, index) => {
-          let childDiv1 = document.createElement("div");
-          childDiv1.style.border = "0.5px solid white";
-          childDiv1.style.background = "rgba(254, 254, 254, 0.3)";
-          childDiv1.style.margin = "5px";
-          childDiv1.style.width = "19%";
-          if (index < 5) {
-            childDiv1.innerHTML += `<a class="movie-header" href="index.html?i=${movie.imdbID}">${movie.Title}</a>`;
-            childDiv1.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}" height="150px" width="150px"></a>`;
-            movieDiv.append(childDiv1);
-          } else {
-            childDiv1.innerHTML += `<a class="movie-header" href="index.html?i=${movie.imdbID}">${movie.Title}</a>`;
-            childDiv1.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}" height="150px" width="150px"></a>`;
-            movieDiv2.append(childDiv1);
-          }
+        data.Search.forEach((movie) => {
+          let childDiv = document.createElement("div");
+          childDiv.style.border = "1px solid white";
+          childDiv.style.background = "rgba(254, 254, 254, 0.3)";
+          childDiv.style.margin = "5px";
+          childDiv.classList.add("sm:w-full", "lg:w-1/5");
+          childDiv.innerHTML += `<a href="index.html?i=${movie.imdbID}"><div class="movie-header">${movie.Title}</div></a>`;
+          childDiv.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}" height="175" width="175"></a>`;
+          movieResults.append(childDiv);
         });
-        movieResults.append(movieDiv, movieDiv2);
       }
     });
 }

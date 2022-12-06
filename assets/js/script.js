@@ -16,6 +16,7 @@ let moviesArray = JSON.parse(localStorage.getItem("bookmarks")) || [];
 function init() {
   const urlParams = new URLSearchParams(window.location.search);
   const movieID = urlParams.get("i") || "";
+
   if (movieID === "") {
     return;
   }
@@ -63,7 +64,7 @@ function handleSearchButton() {
           childDiv.style.border = "1px solid white";
           childDiv.style.background = "rgba(254, 254, 254, 0.3)";
           childDiv.style.margin = "5px";
-          childDiv.classList.add("sm:w-full", "lg:w-1/5");
+          childDiv.classList.add("sm:w-3/4", "lg:w-1/6");
           childDiv.innerHTML += `<a href="index.html?i=${movie.imdbID}"><div class="movie-header">${movie.Title}</div></a>`;
           childDiv.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}" height="175" width="175"></a>`;
           movieResults.append(childDiv);
@@ -108,6 +109,7 @@ function saveBookmark() {
     poster: savedPoster,
     id: savedID,
   };
+
   function isMovieDuplicate(movie) {
     for (let i = 0; i < moviesArray.length; i++) {
       if (moviesArray[i].id === movie.id) {
@@ -128,10 +130,8 @@ function saveBookmark() {
   }
 
   if (isMovieDuplicate(moviesObject)) {
-    console.warn("removed movie");
     removeMovie(moviesObject);
   } else {
-    console.warn("added movie");
     moviesArray.push(moviesObject);
     localStorage.setItem("bookmarks", JSON.stringify(moviesArray));
   }

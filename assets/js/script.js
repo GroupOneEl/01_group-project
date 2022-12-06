@@ -87,7 +87,7 @@ function handleHomeBtn() {
   singleMovie.innerHTML = "";
   singlePoster.innerHTML = "";
   movieResults.innerHTML = "";
-  window.location.href = "file:///Users/amerkulovic/code/01_group-project/index.html"
+  window.location.href = "file:///Users/amerkulovic/code/01_group-project/index.html";
   bookMarkEl.classList.add("hidden");
   shareBtnEl.classList.add("hidden");
 }
@@ -98,28 +98,16 @@ function handleShowBookMark() {
   movieResults.innerHTML = "";
   bookMarkEl.classList.add("hidden");
   shareBtnEl.classList.add("hidden");
-
-  let movieDivTop = document.createElement("div");
-  movieDivTop.style.display = "flex";
-  let movieDivBottom = document.createElement("div");
-  movieDivBottom.style.display = "flex";
-  moviesArray.forEach((movie, index) => {
+  moviesArray.forEach((movie) => {
     let childDiv = document.createElement("div");
     childDiv.style.border = "1px solid white";
     childDiv.style.background = "rgba(254, 254, 254, 0.3)";
     childDiv.style.margin = "5px";
-    childDiv.style.width = "19%";
-    if (index < 5) {
-      childDiv.innerHTML += `<a href="index.html?i=${movie.id}"><div class="movie-header">${movie.movie}</div></a>`;
-      childDiv.innerHTML += `<a href="index.html?i=${movie.id}"><img class="object-center" src="${movie.poster}" height="175" width="175"></a>`;
-      movieDivTop.append(childDiv);
-    } else {
-      childDiv.innerHTML += `<a href="index.html?i=${movie.id}"><div class="movie-header">${movie.movie}</div></a>`;
-      childDiv.innerHTML += `<a href="index.html?i=${movie.id}"><img class="object-center" src="${movie.poster}" height="175" width="175"></a>`;
-      movieDivBottom.append(childDiv);
-    }
+    childDiv.classList.add("sm:w-full", "lg:w-1/5");
+    childDiv.innerHTML += `<a href="index.html?i=${movie.id}"><div class="movie-header">${movie.movie}</div></a>`;
+    childDiv.innerHTML += `<a href="index.html?i=${movie.id}"><img class="object-center" src="${movie.poster}" height="175" width="175"></a>`;
+    movieResults.append(childDiv);
   });
-  movieResults.append(movieDivTop, movieDivBottom);
 }
 
 function saveBookmark() {

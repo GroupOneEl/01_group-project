@@ -45,7 +45,7 @@ body {
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 645px) {
   .movie-header {
     font-size: 0px;
   }

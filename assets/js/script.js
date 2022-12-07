@@ -74,7 +74,7 @@ function handleSearchButton() {
           childDiv.style.background = "rgba(254, 254, 254, 0.3)";
           childDiv.style.margin = "5px";
           childDiv.classList.add("sm:w-3/4", "lg:w-1/6", "movie-selection");
-          childDiv.innerHTML += `<a href="index.html?i=${movie.imdbID}"><div class="movie-seearch-header">${movie.Title}</div></a>`;
+          childDiv.innerHTML += `<a href="index.html?i=${movie.imdbID}"><div class="movie-search-header">${movie.Title}</div></a>`;
           childDiv.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}" height="175" width="175"></a>`;
           movieResults.append(childDiv);
         });
@@ -148,15 +148,12 @@ function saveBookmark() {
   }
 }
 
-function copy() {
-  navigator.clipboard
-    .writeText(window.location.href)
-    .then(() => {
-      alert(`Saved to clipboard successfully`);
-    })
-    .catch((err) => {
-      alert(`Error while saving to clipboard, ${err}`);
-    });
+function copyToClipboard() {
+  var snackbar = document.getElementById("snackbar");
+  snackbar.className = "show";
+  setTimeout(function () {
+    snackbar.className = snackbar.className.replace("show", "");
+  }, 3000);
 }
 
 searchButton.addEventListener("click", handleSearchButton);
@@ -166,9 +163,5 @@ bookMarkEl.addEventListener("click", saveBookmark);
 showBookMark.addEventListener("click", handleShowBookMark);
 
 homeBtnEl.addEventListener("click", handleHomeBtn);
-
-shareBtnEl.addEventListener("click", copy);
-
-homeShareBtnEl.addEventListener("click", copy);
 
 init();

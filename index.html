@@ -22,7 +22,7 @@
       <nav class="px-7 mt-2 lg:order-2">
         <button id="home-button" class="px-1"><span class="material-symbols-outlined text-white text-4xl"> home </span></button>
         <button id="show-bookmark" class="px-1"><span class="material-symbols-outlined text-white text-4xl"> bookmark </span></button>
-        <button onclick="copyToClipboard()" id="home-share-btn" class="px-1"><span class="material-symbols-outlined text-white text-4xl"> share </span></button>
+        <button onclick="toastPopUp()" id="home-share-btn" class="px-1"><span class="material-symbols-outlined text-white text-4xl"> share </span></button>
       </nav>
     </header>
     <h1 id="home-message" class="text-white text-center text-6xl pt-20 mt-20 movie-header">SEARCH. SAVE. DISCOVER.</h1>
@@ -31,7 +31,7 @@
     <div class="text-center background" id="single-movie"></div>
     <div class="text-center background">
       <button id="add-bookmark" class="inline-block hidden mt-5"><span class="material-symbols-outlined text-4xl"> bookmark </span></button>
-      <button onclick="copyToClipboard()" id="share-btn" class="inline-block hidden"><span class="material-symbols-outlined text-4xl"> share </span></button>
+      <button onclick="toastPopUp()" id="share-btn" class="inline-block hidden"><span class="material-symbols-outlined text-4xl"> share </span></button>
       <div id="snackbar">Saved to Clipboard</div>
     </div>
 

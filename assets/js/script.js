@@ -11,7 +11,7 @@ let homeShareBtnEl = document.querySelector("#home-share-btn");
 let homeMessage = document.querySelector("#home-message");
 
 let moviesArray = JSON.parse(localStorage.getItem("bookmarks")) || [];
-
+// The initial function we want to run on the start of the page
 function init() {
   const urlParams = new URLSearchParams(window.location.search);
   const movieID = urlParams.get("i") || "";
@@ -52,6 +52,7 @@ function init() {
       bookMarkEl.setAttribute("movieID", data.imdbID);
     });
 }
+// Fetches movies and displays them on search
 function handleSearchButton() {
   singleMovie.innerHTML = "";
   singlePoster.innerHTML = "";
@@ -81,7 +82,7 @@ function handleSearchButton() {
       }
     });
 }
-
+// Shows the home text and removes any movie or buttons from screen
 function handleHomeBtn() {
   homeMessage.classList.remove("hidden");
   singleMovie.innerHTML = "";
@@ -90,7 +91,7 @@ function handleHomeBtn() {
   bookMarkEl.classList.add("hidden");
   shareBtnEl.classList.add("hidden");
 }
-
+// Shows all the movies you have bookmarked so far
 function handleShowBookMark() {
   homeMessage.classList.add("hidden");
   singleMovie.innerHTML = "";
@@ -109,7 +110,7 @@ function handleShowBookMark() {
     movieResults.append(childDiv);
   });
 }
-
+// Stores the movie into local storage as an object
 function saveBookmark() {
   bookMarkEl.classList.toggle("text-amber-500");
   let savedMovie = this.getAttribute("movieTitle");
@@ -120,7 +121,7 @@ function saveBookmark() {
     poster: savedPoster,
     id: savedID,
   };
-
+  // Checks if the movie ID is already in local storage
   function isMovieDuplicate(movie) {
     for (let i = 0; i < moviesArray.length; i++) {
       if (moviesArray[i].id === movie.id) {
@@ -129,7 +130,7 @@ function saveBookmark() {
     }
     return false;
   }
-
+  // Removes the movie if the ID is the same
   function removeMovie(movie) {
     for (let i = 0; i < moviesArray.length; i++) {
       if (moviesArray[i].id === movie.id) {
@@ -139,7 +140,7 @@ function saveBookmark() {
       }
     }
   }
-
+  // Checks if the movies is a duplicate, if so, it will remove the movie, else it will add it to local storage
   if (isMovieDuplicate(moviesObject)) {
     removeMovie(moviesObject);
   } else {
@@ -147,13 +148,17 @@ function saveBookmark() {
     localStorage.setItem("bookmarks", JSON.stringify(moviesArray));
   }
 }
-
-function copyToClipboard() {
-  var snackbar = document.getElementById("snackbar");
+// Show a toast when clicking on the share button
+function toastPopUp() {
+  let snackbar = document.getElementById("snackbar");
   snackbar.className = "show";
   setTimeout(function () {
     snackbar.className = snackbar.className.replace("show", "");
   }, 3000);
+}
+// Copy the url to the clipboard
+function copy() {
+  navigator.clipboard.writeText(window.location.href);
 }
 
 searchButton.addEventListener("click", handleSearchButton);
@@ -163,5 +168,9 @@ bookMarkEl.addEventListener("click", saveBookmark);
 showBookMark.addEventListener("click", handleShowBookMark);
 
 homeBtnEl.addEventListener("click", handleHomeBtn);
+
+shareBtnEl.addEventListener("click", copy);
+
+homeShareBtnEl.addEventListener("click", copy);
 
 init();

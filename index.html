@@ -11,20 +11,21 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>MyMovieSpace</title>
   </head>
-
+ 
   <body>
-    <header class="bg-gradient-to-r from-black via-red-700 to-black p-4 text-center">
-      <h1 class="inline-block text-white text-6xl font">MyMovieSpace</h1>
-      <div class="inline-block float-left">
+    <header class="bg-gradient-to-r from-black via-red-700 to-black p-4 text-center flex lg:flex-row flex-col justify-between ">
+      <h1 class="text-white text-6xl font lg:order-1">MyMovieSpace</h1>
+      <div class="">
         <input id="search-input" placeholder="Search..." class="border my-3" type="" />
         <button id="search-button" class="text-red-700 bg-white px-2">Search</button>
       </div>
-      <nav class="inline-block float-right px-7 mt-2">
+      <nav class="px-7 mt-2 lg:order-2">
         <button id="home-button" class="px-1"><span class="material-symbols-outlined text-white text-4xl"> home </span></button>
         <button id="show-bookmark" class="px-1"><span class="material-symbols-outlined text-white text-4xl"> bookmark </span></button>
         <button id="home-share-btn" class="px-1"><span class="material-symbols-outlined text-white text-4xl"> share </span></button>
       </nav>
     </header>
+    <h1 id="home-message" class="text-white text-center text-6xl align-middle pt-20 mt-20 movie-header">SEARCH. SAVE. DISCOVER.</h1>
     <div class="text-center flex flex-wrap justify-center gap-2" id="movie-results"></div>
     <div class="text-center mb-8" id="single-poster"></div>
     <div class="text-center background" id="single-movie"></div>

@@ -25,6 +25,11 @@ body {
   font-size: 30px;
   color: white;
 }
+.movie-search-header {
+  font-family: movie-header;
+  font-size: 30px;
+  color: white;
+}
 .headings {
   font-family: art-deco;
   font-size: 25px;
@@ -44,9 +49,8 @@ body {
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
 }
 
-
 @media screen and (max-width: 645px) {
-  .movie-header {
+  .movie-search-header {
     font-size: 0px;
   }
 }

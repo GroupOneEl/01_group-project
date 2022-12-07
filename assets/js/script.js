@@ -12,7 +12,6 @@ let homeMessage = document.querySelector("#home-message");
 
 let moviesArray = JSON.parse(localStorage.getItem("bookmarks")) || [];
 
-
 function init() {
   const urlParams = new URLSearchParams(window.location.search);
   const movieID = urlParams.get("i") || "";
@@ -58,10 +57,10 @@ function handleSearchButton() {
   singlePoster.innerHTML = "";
   movieResults.innerHTML = "";
   fetch(`https://www.omdbapi.com/?apikey=f14ca85d&s=${searchInput.value}`)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
       homeMessage.classList.add("hidden");
       bookMarkEl.classList.add("hidden");
       shareBtnEl.classList.add("hidden");
@@ -75,10 +74,9 @@ function handleSearchButton() {
           childDiv.style.background = "rgba(254, 254, 254, 0.3)";
           childDiv.style.margin = "5px";
           childDiv.classList.add("sm:w-3/4", "lg:w-1/6", "movie-selection");
-          childDiv.innerHTML += `<a href="index.html?i=${movie.imdbID}"><div class="movie-header">${movie.Title}</div></a>`;
+          childDiv.innerHTML += `<a href="index.html?i=${movie.imdbID}"><div class="movie-seearch-header">${movie.Title}</div></a>`;
           childDiv.innerHTML += `<a href="index.html?i=${movie.imdbID}"><img class="object-center" src="${movie.Poster}" height="175" width="175"></a>`;
           movieResults.append(childDiv);
-    
         });
       }
     });
@@ -106,7 +104,7 @@ function handleShowBookMark() {
     childDiv.style.background = "rgba(254, 254, 254, 0.3)";
     childDiv.style.margin = "5px";
     childDiv.classList.add("sm:w-3/4", "lg:w-1/6", "movie-selection");
-    childDiv.innerHTML += `<a href="index.html?i=${movie.id}"><div class="movie-header">${movie.movie}</div></a>`;
+    childDiv.innerHTML += `<a href="index.html?i=${movie.id}"><div class="movie-search-header">${movie.movie}</div></a>`;
     childDiv.innerHTML += `<a href="index.html?i=${movie.id}"><img class="object-center" src="${movie.poster}" height="175" width="175"></a>`;
     movieResults.append(childDiv);
   });

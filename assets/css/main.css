@@ -121,6 +121,7 @@ body {
     font-size: 0px;
   }
   body {
-    background: url(./nahuel-maretich-EeCQy8ZOmO0-unsplash.jpg) no-repeat center center fixed;
+    background: url(./nahuel-maretich-EeCQy8ZOmO0-unsplash.jpg);
+    background-size: auto;
   }
 }

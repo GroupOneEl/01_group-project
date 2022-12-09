@@ -11,7 +11,7 @@ img {
   margin: 10px 0;
 }
 body {
-  background: url("./nahuel-maretich-EeCQy8ZOmO0-unsplash.jpg");
+  background: url("./nahuel-maretich-EeCQy8ZOmO0-unsplash.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 .background {
@@ -119,5 +119,8 @@ body {
 @media screen and (max-width: 645px) {
   .movie-search-header {
     font-size: 0px;
+  }
+  body {
+    background: url(./nahuel-maretich-EeCQy8ZOmO0-unsplash.jpg) no-repeat center center fixed;
   }
 }
